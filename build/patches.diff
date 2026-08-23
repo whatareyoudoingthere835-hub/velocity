@@ -1,0 +1,443 @@
+--- a/cs2/velocity-cs2/project/core/hooks/impl/cheat.cpp
++++ b/cs2/velocity-cs2/project/core/hooks/impl/cheat.cpp
+@@ -14,46 +14,46 @@
+ 
+ 	bool cheat::initialize () {
+ 		if (!hooking::manager::create ({
+-			{ &m_present, &present, xs ("present"), addresses::functions::present },
+-			{ &m_resize_buffers, &resize_buffers, xs ("resize_buffers"), addresses::functions::resize_buffers },
+-			{ &m_cmd_interpreter, &cmd_interpreter, xs ("cmd_interpreter"), PATTERN (patterns::cmd_interpreter) },
+-			{ &m_frame_stage_notify, &frame_stage_notify, xs ("frame_stage_notify"), PATTERN (patterns::frame_stage_notify) },
+-			{ &m_create_move, &create_move, xs ("create_move"), PATTERN (patterns::create_move) },
+-			{ &m_handle_view_angles, &handle_view_angles, xs ("handle_view_angles"), PATTERN (patterns::handle_view_angles) },
+-			{ &m_add_entity, &add_entity, xs ("add_entity"), PATTERN (patterns::add_entity) },
+-			{ &m_remove_entity, &remove_entity, xs ("remove_entity"), PATTERN (patterns::remove_entity) },
+-			{ &m_render_view, &render_view, xs ("render_view"), PATTERN (patterns::render_view) },
+-			{ &m_draw_skybox_array, &draw_skybox_array, xs ("draw_skybox_array"), PATTERN (patterns::draw_skybox_array) },
+-			{ &m_light_scene_object, &light_scene_object, xs ("light_scene_object"), PATTERN (patterns::light_scene_object) },
+-			{ &m_draw_scene_object_array, &draw_scene_object_array, xs ("draw_scene_object_array"), PATTERN (patterns::draw_scene_object_array) },
+-			{ &m_draw_scene_object, &draw_scene_object, xs ("draw_scene_object"), PATTERN (patterns::draw_scene_object) },
+-			{ &m_is_glowing, &is_glowing, xs ("is_glowing"), PATTERN (patterns::is_glowing) },
+-			{ &m_get_glow_color, &get_glow_color, xs ("get_glow_color"), PATTERN (patterns::get_glow_color) },
+-			{ &m_generate_primitives, &generate_primitives, xs ("generate_primitives"), PATTERN (patterns::generate_primitives) },
+-			{ &m_parse_report_hit, &parse_report_hit, xs ("parse_report_hit"), PATTERN (patterns::parse_report_hit) },
+-			{ &m_get_scene_param, &get_scene_param, xs ("get_scene_param"), PATTERN (patterns::get_scene_param) },
+-			{ &m_set_shader_param, &set_shader_param, xs ("set_shader_param"), PATTERN (patterns::set_shader_param) },
+-			{ &m_override_view, &override_view, xs ("override_view"), PATTERN (patterns::override_view) },
+-			{ &m_update_fov_sensitivity, &update_fov_sensitivity, xs ("update_fov_sensitivity"), PATTERN (patterns::update_fov_sensitivity) },
+-			{ &m_render_scope, &render_scope, xs ("render_scope"), PATTERN (patterns::render_scope) },
+-			{ &m_render_crosshair, &render_crosshair, xs ("render_crosshair"), PATTERN (patterns::render_crosshair) },
+-			{ &m_prepare_scene_material, &prepare_scene_material, xs ("prepare_scene_material"), PATTERN (patterns::prepare_scene_material) },
+-			{ &m_post_network_data_received, &post_network_data_received, xs ("post_network_data_received"), PATTERN (patterns::post_network_data_received) },
+-			{ &m_draw_overhead, &draw_overhead, xs ("draw_overhead"), PATTERN (patterns::draw_overhead) },
+-			{ &m_draw_legs, &draw_legs, xs ("draw_legs"), PATTERN (patterns::draw_legs) },
+-			{ &m_is_enemy_on_radar, &is_enemy_on_radar, xs ("is_enemy_on_radar"), PATTERN (patterns::is_enemy_on_radar) },
+-			{ &m_get_transforms_for_hitbox_list, &get_transforms_for_hitbox_list, xs ("get_transforms_for_hitbox_list"), PATTERN (patterns::get_transforms_for_hitbox_list) },
+-			{ &m_sort_primitives, &sort_primitives, xs ("sort_primitives"), PATTERN (patterns::sort_primitives) },
+-			{ &m_get_inaccuracy, &get_inaccuracy, xs ("get_inaccuracy"), PATTERN (patterns::get_inaccuracy) },
+-			{ &m_get_interpolated_shoot_position, &get_interpolated_shoot_position, xs ("get_interpolated_shoot_position"), PATTERN (patterns::get_interpolated_shoot_position) },
+-			{ &m_level_initialization, &level_initialization, xs ("level_initialization"), PATTERN (patterns::level_initialization) },
+-			{ &m_level_shutdown, &level_shutdown, xs ("level_shutdown"), PATTERN (patterns::level_shutdown) },
+-			{ &m_read_frame_input, &read_frame_input, xs ("read_frame_input"), PATTERN (patterns::read_frame_input) },
+-			{ &m_process_input_event, &process_input_event, xs ("process_input_event"), PATTERN (patterns::process_input_event) },
+-			{ &m_render_decals, &render_decals, xs ("render_decals"), PATTERN (patterns::render_decals) },
+-			{ &m_render_smoke, &render_smoke, xs ("render_smoke"), PATTERN (patterns::render_smoke) },
+-			{ &m_draw_flash_effect, &draw_flash_effect, xs ("draw_flash_effect"), PATTERN (patterns::draw_flash_effect) },
+-			{ &m_set_info, &set_info, xs ("set_info"), PATTERN (patterns::set_info) }
++			{ &m_present, (void *)&present, xs ("present"), addresses::functions::present },
++			{ &m_resize_buffers, (void *)&resize_buffers, xs ("resize_buffers"), addresses::functions::resize_buffers },
++			{ &m_cmd_interpreter, (void *)&cmd_interpreter, xs ("cmd_interpreter"), PATTERN (patterns::cmd_interpreter) },
++			{ &m_frame_stage_notify, (void *)&frame_stage_notify, xs ("frame_stage_notify"), PATTERN (patterns::frame_stage_notify) },
++			{ &m_create_move, (void *)&create_move, xs ("create_move"), PATTERN (patterns::create_move) },
++			{ &m_handle_view_angles, (void *)&handle_view_angles, xs ("handle_view_angles"), PATTERN (patterns::handle_view_angles) },
++			{ &m_add_entity, (void *)&add_entity, xs ("add_entity"), PATTERN (patterns::add_entity) },
++			{ &m_remove_entity, (void *)&remove_entity, xs ("remove_entity"), PATTERN (patterns::remove_entity) },
++			{ &m_render_view, (void *)&render_view, xs ("render_view"), PATTERN (patterns::render_view) },
++			{ &m_draw_skybox_array, (void *)&draw_skybox_array, xs ("draw_skybox_array"), PATTERN (patterns::draw_skybox_array) },
++			{ &m_light_scene_object, (void *)&light_scene_object, xs ("light_scene_object"), PATTERN (patterns::light_scene_object) },
++			{ &m_draw_scene_object_array, (void *)&draw_scene_object_array, xs ("draw_scene_object_array"), PATTERN (patterns::draw_scene_object_array) },
++			{ &m_draw_scene_object, (void *)&draw_scene_object, xs ("draw_scene_object"), PATTERN (patterns::draw_scene_object) },
++			{ &m_is_glowing, (void *)&is_glowing, xs ("is_glowing"), PATTERN (patterns::is_glowing) },
++			{ &m_get_glow_color, (void *)&get_glow_color, xs ("get_glow_color"), PATTERN (patterns::get_glow_color) },
++			{ &m_generate_primitives, (void *)&generate_primitives, xs ("generate_primitives"), PATTERN (patterns::generate_primitives) },
++			{ &m_parse_report_hit, (void *)&parse_report_hit, xs ("parse_report_hit"), PATTERN (patterns::parse_report_hit) },
++			{ &m_get_scene_param, (void *)&get_scene_param, xs ("get_scene_param"), PATTERN (patterns::get_scene_param) },
++			{ &m_set_shader_param, (void *)&set_shader_param, xs ("set_shader_param"), PATTERN (patterns::set_shader_param) },
++			{ &m_override_view, (void *)&override_view, xs ("override_view"), PATTERN (patterns::override_view) },
++			{ &m_update_fov_sensitivity, (void *)&update_fov_sensitivity, xs ("update_fov_sensitivity"), PATTERN (patterns::update_fov_sensitivity) },
++			{ &m_render_scope, (void *)&render_scope, xs ("render_scope"), PATTERN (patterns::render_scope) },
++			{ &m_render_crosshair, (void *)&render_crosshair, xs ("render_crosshair"), PATTERN (patterns::render_crosshair) },
++			{ &m_prepare_scene_material, (void *)&prepare_scene_material, xs ("prepare_scene_material"), PATTERN (patterns::prepare_scene_material) },
++			{ &m_post_network_data_received, (void *)&post_network_data_received, xs ("post_network_data_received"), PATTERN (patterns::post_network_data_received) },
++			{ &m_draw_overhead, (void *)&draw_overhead, xs ("draw_overhead"), PATTERN (patterns::draw_overhead) },
++			{ &m_draw_legs, (void *)&draw_legs, xs ("draw_legs"), PATTERN (patterns::draw_legs) },
++			{ &m_is_enemy_on_radar, (void *)&is_enemy_on_radar, xs ("is_enemy_on_radar"), PATTERN (patterns::is_enemy_on_radar) },
++			{ &m_get_transforms_for_hitbox_list, (void *)&get_transforms_for_hitbox_list, xs ("get_transforms_for_hitbox_list"), PATTERN (patterns::get_transforms_for_hitbox_list) },
++			{ &m_sort_primitives, (void *)&sort_primitives, xs ("sort_primitives"), PATTERN (patterns::sort_primitives) },
++			{ &m_get_inaccuracy, (void *)&get_inaccuracy, xs ("get_inaccuracy"), PATTERN (patterns::get_inaccuracy) },
++			{ &m_get_interpolated_shoot_position, (void *)&get_interpolated_shoot_position, xs ("get_interpolated_shoot_position"), PATTERN (patterns::get_interpolated_shoot_position) },
++			{ &m_level_initialization, (void *)&level_initialization, xs ("level_initialization"), PATTERN (patterns::level_initialization) },
++			{ &m_level_shutdown, (void *)&level_shutdown, xs ("level_shutdown"), PATTERN (patterns::level_shutdown) },
++			{ &m_read_frame_input, (void *)&read_frame_input, xs ("read_frame_input"), PATTERN (patterns::read_frame_input) },
++			{ &m_process_input_event, (void *)&process_input_event, xs ("process_input_event"), PATTERN (patterns::process_input_event) },
++			{ &m_render_decals, (void *)&render_decals, xs ("render_decals"), PATTERN (patterns::render_decals) },
++			{ &m_render_smoke, (void *)&render_smoke, xs ("render_smoke"), PATTERN (patterns::render_smoke) },
++			{ &m_draw_flash_effect, (void *)&draw_flash_effect, xs ("draw_flash_effect"), PATTERN (patterns::draw_flash_effect) },
++			{ &m_set_info, (void *)&set_info, xs ("set_info"), PATTERN (patterns::set_info) }
+ 			})) {
+ 			return false;
+ 		}
+@@ -114,7 +114,7 @@
+ 
+ 		if ( !m_wnd_proc.is_enabled( ) && rendering::g_context.get_window( ) )
+ 		{
+-			if ( m_wnd_proc.create( reinterpret_cast< void* >( GetWindowLongPtrW( rendering::g_context.get_window( ), GWLP_WNDPROC ) ), &wnd_proc ) )
++			if ( m_wnd_proc.create( reinterpret_cast< void* >( GetWindowLongPtrW( rendering::g_context.get_window( ), GWLP_WNDPROC ) ), ( void* )&wnd_proc ) )
+ 			{
+ 				m_wnd_proc.enable( );
+ 			}
+@@ -123,7 +123,7 @@
+ 		if ( !m_om_set_render_targets.is_enabled( ) && rendering::g_context.is_initialized( ) )
+ 		{
+ 			const auto om_addr = memory::get_vfunc( reinterpret_cast< std::uintptr_t >( rendering::g_context.get_context( ) ), 33 );
+-			if ( m_om_set_render_targets.create( reinterpret_cast< void* >( om_addr ), &om_set_render_targets ) )
++			if ( m_om_set_render_targets.create( reinterpret_cast< void* >( om_addr ), ( void* )&om_set_render_targets ) )
+ 			{
+ 				m_om_set_render_targets.enable( );
+ 			}
+@@ -787,12 +787,12 @@
+ 					return;
+ 				}
+ 
+-				if ( m_render_smoke_map.create( reinterpret_cast< void* >( memory::get_vfunc( a2, 32 ) ), &render_smoke_map ) )
++				if ( m_render_smoke_map.create( reinterpret_cast< void* >( memory::get_vfunc( a2, 32 ) ), ( void* )&render_smoke_map ) )
+ 				{
+ 					m_render_smoke_map.enable( );
+ 				}
+ 
+-				if ( m_render_smoke_unmap.create( reinterpret_cast< void* >( memory::get_vfunc( a2, 33 ) ), &render_smoke_unmap ) )
++				if ( m_render_smoke_unmap.create( reinterpret_cast< void* >( memory::get_vfunc( a2, 33 ) ), ( void* )&render_smoke_unmap ) )
+ 				{
+ 					m_render_smoke_unmap.enable( );
+ 				}
+--- a/cs2/velocity-cs2/project/core/hooks/impl/utility.cpp
++++ b/cs2/velocity-cs2/project/core/hooks/impl/utility.cpp
+@@ -12,8 +12,8 @@
+ 	bool utility::initialize( )
+ 	{
+ 		if ( !hooking::manager::create( {
+-			{ &m_service_read, &service_read, xs( "service_read" ), PATTERN (patterns::service_read) },
+-			{ &m_log_internal, &log_internal, xs( "log_internal" ),PATTERN (patterns::log_internal) }
++			{ &m_service_read, (void *)&service_read, xs( "service_read" ), PATTERN (patterns::service_read) },
++			{ &m_log_internal, (void *)&log_internal, xs( "log_internal" ),PATTERN (patterns::log_internal) }
+ 			} ) )
+ 		{
+ 			return false;
+--- a/cs2/velocity-cs2/project/core/hooks/impl/vac.cpp
++++ b/cs2/velocity-cs2/project/core/hooks/impl/vac.cpp
+@@ -13,9 +13,9 @@
+ 	bool vac::initialize( )
+ 	{
+ 		if ( !hooking::manager::create( {
+-			{ &m_analyze_pe_module, &analyze_pe_module, xs( "analyze_pe_module" ), PATTERN (patterns::analyze_pe_module) },
+-			{ &m_build_diagnostic_response, &build_diagnostic_response, xs( "build_diagnostic_response" ), PATTERN (patterns::build_diagnostic_response) },
+-			{ &m_string_copy, &string_copy, xs( "string_copy" ), PATTERN (patterns::string_copy) }
++			{ &m_analyze_pe_module, (void *)&analyze_pe_module, xs( "analyze_pe_module" ), PATTERN (patterns::analyze_pe_module) },
++			{ &m_build_diagnostic_response, (void *)&build_diagnostic_response, xs( "build_diagnostic_response" ), PATTERN (patterns::build_diagnostic_response) },
++			{ &m_string_copy, (void *)&string_copy, xs( "string_copy" ), PATTERN (patterns::string_copy) }
+ 			} ) )
+ 		{
+ 			return false;
+--- a/cs2/velocity-cs2/project/external/inline-syscall/inline_syscall.inl
++++ b/cs2/velocity-cs2/project/external/inline-syscall/inline_syscall.inl
+@@ -22,7 +22,7 @@
+ #if defined(_MSC_VER)
+ #define JM_INLINE_SYSCALL_FORCEINLINE __forceinline
+ #else
+-#define JM_INLINE_SYSCALL_FORCEINLINE __attribute__((always_inline))
++#define JM_INLINE_SYSCALL_FORCEINLINE inline __attribute__((always_inline))
+ #endif
+ 
+ // helper macro to reduce the typing a bit
+--- a/cs2/velocity-cs2/project/external/phnt/ntintsafe.h
++++ b/cs2/velocity-cs2/project/external/phnt/ntintsafe.h
+@@ -141,7 +141,9 @@
+ #define STATUS_SUCCESS  ((NTSTATUS)0x00000000L)
+ #ifndef SORTPP_PASS
+ // compiletime asserts (failure results in error C2118: negative subscript)
+-#define C_ASSERT(e) typedef char __C_ASSERT__[(e)?1:-1]
++#ifndef C_ASSERT
++#define C_ASSERT(e) extern void __C_ASSERT__(int [(e)?1:-1])
++#endif
+ #else
+ #define C_ASSERT(e)
+ #endif
+--- a/cs2/velocity-cs2/project/external/phnt/ntioapi.h
++++ b/cs2/velocity-cs2/project/external/phnt/ntioapi.h
+@@ -2989,6 +2989,7 @@
+ // Other types
+ //
+ 
++#ifndef PHNT_COMPAT_PRENUMS
+ typedef enum _INTERFACE_TYPE
+ {
+     InterfaceTypeUndefined = -1,
+@@ -3012,6 +3013,7 @@
+     ACPIBus = 17,
+     MaximumInterfaceType
+ } INTERFACE_TYPE, *PINTERFACE_TYPE;
++#endif
+ 
+ typedef enum _DMA_WIDTH
+ {
+@@ -3033,6 +3035,7 @@
+     MaximumDmaSpeed
+ } DMA_SPEED, *PDMA_SPEED;
+ 
++#ifndef PHNT_COMPAT_PRENUMS
+ typedef enum _BUS_DATA_TYPE
+ {
+     ConfigurationSpaceUndefined = -1,
+@@ -3050,6 +3053,7 @@
+     SgiInternalConfiguration,
+     MaximumBusDataType
+ } BUS_DATA_TYPE, *PBUS_DATA_TYPE;
++#endif
+ 
+ // Control structures
+ 
+--- a/cs2/velocity-cs2/project/external/phnt/ntrtl.h
++++ b/cs2/velocity-cs2/project/external/phnt/ntrtl.h
+@@ -7086,6 +7086,9 @@
+     _Out_opt_ PSIZE_T ReturnLength
+     );
+ 
++// mingw winnt.h уже объявляет RtlSetHeapInformation (PVOID-сигнатура);
++// дубль с PCVOID-параметром даёт конфликт типов, код проекта функцию не использует
++#ifndef PHNT_COMPAT_NO_RTLSETHEAPINFO
+ NTSYSAPI
+ NTSTATUS
+ NTAPI
+@@ -7095,6 +7098,7 @@
+     _In_opt_ PCVOID HeapInformation,
+     _In_opt_ SIZE_T HeapInformationLength
+     );
++#endif
+ 
+ NTSYSAPI
+ ULONG
+--- a/cs2/velocity-cs2/project/external/phnt/ntstrsafe.h
++++ b/cs2/velocity-cs2/project/external/phnt/ntstrsafe.h
+@@ -66,7 +66,9 @@
+ 
+ #ifndef SORTPP_PASS
+ // compiletime asserts (failure results in error C2118: negative subscript)
+-#define C_ASSERT(e) typedef char __C_ASSERT__[(e)?1:-1]
++#ifndef C_ASSERT
++#define C_ASSERT(e) extern void __C_ASSERT__(int [(e)?1:-1])
++#endif
+ #else
+ #define C_ASSERT(e)
+ #endif
+--- a/cs2/velocity-cs2/project/external/stackwalker/stackwalker.cpp
++++ b/cs2/velocity-cs2/project/external/stackwalker/stackwalker.cpp
+@@ -94,14 +94,14 @@
+ #pragma comment(lib, "version.lib") // for "VerQueryValue"
+ 
+ #pragma warning(disable : 4826)
+-#if _MSC_VER >= 1900
++#if SW_MSC_VER >= 1900
+ #pragma warning(disable : 4091)   // For fix unnamed enums from DbgHelp.h
+ #endif
+ 
+ 
+  // If VC7 and later, then use the shipped 'dbghelp.h'-file
+ #pragma pack(push, 8)
+-#if _MSC_VER >= 1300
++#if 1  // compat: dbghelp.h есть в mingw-w64, инлайн-дубликаты не нужны
+ #include <dbghelp.h>
+ #else
+ // inline the important dbghelp.h-declarations...
+@@ -223,7 +223,7 @@
+ #define UNDNAME_NAME_ONLY                (0x1000) // Crack only the name for primary declaration;
+ // clang-format on
+ 
+-#endif // _MSC_VER < 1300
++#endif // SW_MSC_VER < 1300
+ #pragma pack(pop)
+ 
+ // Some missing defines (for VC5/6):
+@@ -232,7 +232,7 @@
+ #endif
+ 
+ // secure-CRT_functions are only available starting with VC8
+-#if _MSC_VER < 1400
++#if SW_MSC_VER < 1400
+ #define strcpy_s(dst, len, src) strcpy(dst, src)
+ #define strncpy_s(dst, len, src, maxLen) strncpy(dst, len, src)
+ #define strcat_s(dst, len, src) strcat(dst, src)
+@@ -877,22 +877,22 @@
+ 
+ // #############################################################
+ 
+-#if defined(_MSC_VER) && _MSC_VER >= 1400 && _MSC_VER < 1900
++#if defined(SW_MSC_VER) && SW_MSC_VER >= 1400 && SW_MSC_VER < 1900
+ extern "C" void* __cdecl _getptd( );
+ #endif
+-#if defined(_MSC_VER) && _MSC_VER >= 1900
++#if defined(SW_MSC_VER) && SW_MSC_VER >= 1900
+ extern "C" void** __cdecl __current_exception_context( );
+ #endif
+ 
+ static PCONTEXT get_current_exception_context( )
+ {
+     PCONTEXT* pctx = NULL;
+-#if defined(_MSC_VER) && _MSC_VER >= 1400 && _MSC_VER < 1900  
++#if defined(SW_MSC_VER) && SW_MSC_VER >= 1400 && SW_MSC_VER < 1900  
+     LPSTR ptd = ( LPSTR )_getptd( );
+     if ( ptd )
+         pctx = ( PCONTEXT* )( ptd + ( sizeof( void* ) == 4 ? 0x8C : 0xF8 ) );
+ #endif
+-#if defined(_MSC_VER) && _MSC_VER >= 1900
++#if defined(SW_MSC_VER) && SW_MSC_VER >= 1900
+     pctx = ( PCONTEXT* )__current_exception_context( );
+ #endif
+     return pctx ? *pctx : NULL;
+@@ -1433,7 +1433,7 @@
+ {
+     CHAR   buffer[ STACKWALK_MAX_NAMELEN ];
+     size_t maxLen = STACKWALK_MAX_NAMELEN;
+-#if _MSC_VER >= 1400
++#if SW_MSC_VER >= 1400
+     maxLen = _TRUNCATE;
+ #endif
+     if ( fileVersion == 0 )
+@@ -1458,7 +1458,7 @@
+ {
+     CHAR   buffer[ STACKWALK_MAX_NAMELEN ];
+     size_t maxLen = STACKWALK_MAX_NAMELEN;
+-#if _MSC_VER >= 1400
++#if SW_MSC_VER >= 1400
+     maxLen = _TRUNCATE;
+ #endif
+     if ( ( eType != lastEntry ) && ( entry.offset != 0 ) )
+@@ -1490,7 +1490,7 @@
+ {
+     CHAR   buffer[ STACKWALK_MAX_NAMELEN ];
+     size_t maxLen = STACKWALK_MAX_NAMELEN;
+-#if _MSC_VER >= 1400
++#if SW_MSC_VER >= 1400
+     maxLen = _TRUNCATE;
+ #endif
+     _snprintf_s( buffer, maxLen, "ERROR: %s, GetLastError: %d (Address: %p)\n", szFuncName, gle,
+@@ -1503,7 +1503,7 @@
+ {
+     CHAR   buffer[ STACKWALK_MAX_NAMELEN ];
+     size_t maxLen = STACKWALK_MAX_NAMELEN;
+-#if _MSC_VER >= 1400
++#if SW_MSC_VER >= 1400
+     maxLen = _TRUNCATE;
+ #endif
+     _snprintf_s( buffer, maxLen, "SymInit: Symbol-SearchPath: '%s', symOptions: %d, UserName: '%s'\n",
+@@ -1511,7 +1511,7 @@
+     buffer[ STACKWALK_MAX_NAMELEN - 1 ] = 0;
+     //OnOutput(buffer);
+     // Also display the OS-version
+-#if _MSC_VER <= 1200
++#if SW_MSC_VER <= 1200
+     OSVERSIONINFOA ver;
+     ZeroMemory( &ver, sizeof( OSVERSIONINFOA ) );
+     ver.dwOSVersionInfoSize = sizeof( ver );
+@@ -1526,7 +1526,7 @@
+     OSVERSIONINFOEXA ver;
+     ZeroMemory( &ver, sizeof( OSVERSIONINFOEXA ) );
+     ver.dwOSVersionInfoSize = sizeof( ver );
+-#if _MSC_VER >= 1900
++#if SW_MSC_VER >= 1900
+ #pragma warning(push)
+ #pragma warning(disable : 4996)
+ #endif
+@@ -1538,7 +1538,7 @@
+         buffer[ STACKWALK_MAX_NAMELEN - 1 ] = 0;
+         //OnOutput(buffer);
+     }
+-#if _MSC_VER >= 1900
++#if SW_MSC_VER >= 1900
+ #pragma warning(pop)
+ #endif
+ #endif
+--- a/cs2/velocity-cs2/project/external/stackwalker/stackwalker.hpp
++++ b/cs2/velocity-cs2/project/external/stackwalker/stackwalker.hpp
+@@ -1,7 +1,7 @@
+ #ifndef __STACKWALKER_H__
+ #define __STACKWALKER_H__
+ 
+-#if defined(_MSC_VER)
++#if defined(SW_MSC_VER)
+ 
+ /**********************************************************************
+  *
+@@ -37,21 +37,21 @@
+  *   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  *
+  * **********************************************************************/
+- // #pragma once is supported starting with _MSC_VER 1000,
+- // so we need not to check the version (because we only support _MSC_VER >= 1100)!
++ // #pragma once is supported starting with SW_MSC_VER 1000,
++ // so we need not to check the version (because we only support SW_MSC_VER >= 1100)!
+ #pragma once
+ 
+ #include <windows.h>
+ 
+ // special defines for VC5/6 (if no actual PSDK is installed):
+-#if _MSC_VER < 1300
++#if SW_MSC_VER < 1300
+ typedef unsigned __int64 DWORD64, * PDWORD64;
+ #if defined(_WIN64)
+ typedef unsigned __int64 SIZE_T, * PSIZE_T;
+ #else
+ typedef unsigned long SIZE_T, * PSIZE_T;
+ #endif
+-#endif // _MSC_VER < 1300
++#endif // SW_MSC_VER < 1300
+ 
+ class StackWalkerInternal; // forward
+ class StackWalker
+@@ -140,7 +140,7 @@
+ 
+     BOOL ShowObject( LPVOID pObject );
+ 
+-#if _MSC_VER >= 1300
++#if SW_MSC_VER >= 1300
+     // due to some reasons, the "STACKWALK_MAX_NAMELEN" must be declared as "public"
+     // in older compilers in order to use it... starting with VC7 we can declare it as "protected"
+ protected:
+@@ -216,7 +216,7 @@
+ 
+ // INFO: If you want, you can use the RtlCaptureContext if you only target XP and later...
+ //       But I currently use it in x64/IA64 environments...
+-//#if defined(_M_IX86) && (_WIN32_WINNT <= 0x0500) && (_MSC_VER < 1400)
++//#if defined(_M_IX86) && (_WIN32_WINNT <= 0x0500) && (SW_MSC_VER < 1400)
+ 
+ #if defined(_M_IX86)
+ #ifdef CURRENT_THREAD_VIA_EXCEPTION
+@@ -268,6 +268,6 @@
+   } while (0);
+ #endif
+ 
+-#endif //defined(_MSC_VER)
++#endif //defined(SW_MSC_VER)
+ 
+ #endif // __STACKWALKER_H__
+\ No newline at end of file
+--- a/cs2/velocity-cs2/project/protection/patterns.hpp
++++ b/cs2/velocity-cs2/project/protection/patterns.hpp
+@@ -1,7 +1,7 @@
+ #ifndef PATTERNS_HPP
+ #define PATTERNS_HPP
+ 
+-namespace protection::addresses { struct address_t; }
++namespace protection::addresses { union address_t; }
+ 
+ namespace patterns {
+ 

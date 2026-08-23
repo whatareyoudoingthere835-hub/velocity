@@ -1,0 +1,7 @@
+# распакованное дерево с патчами — воспроизводится из zip + build/patches.diff
+velocity-src/
+# промежуточные объекты сборки
+build/objs/
+# побочные продукты линковки lld
+build/cs2.pdb
+build/shim.lib
