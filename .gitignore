@@ -1,0 +1,22 @@
+# working extraction directories (regenerated from the archives)
+extracted/
+
+# build artifacts
+*.obj
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.dll
+*.exe
+*.tlog
+*.log
+Debug/
+Release/
+x64/
+x86/
+.vs/
+ipch/
+
+# vcpkg / visual studio user cruft
+velocity-cs2/vcpkg_installed/
