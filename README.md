@@ -44,10 +44,20 @@ working; only layout/colors changed.
 
 Windows only (MSVC):
 
-1. Open `velocity-cs2/velocity-cs2.vcxproj` in Visual Studio 2022.
-2. Restore/install the vcpkg dependencies (the project references a
-   `vcpkg_installed/` toolchain).
-3. Build `Release|x64` — output is `velocity-cs2.dll`.
+1. Open `velocity-cs2/velocity-cs2.sln` in Visual Studio 18
+   (PlatformToolset `v145`). VS 2022 (`v143`) also works if you retarget
+   the project (right-click solution → "Retarget solution").
+2. Build `Release|x64` (or `Development|x64`).
+3. The DLL is output to the `bin/` folder next to `velocity-cs2/`:
+   `bin/velocity.dll` (Release) or `bin/velocity-debug.dll` (Development).
+
+All dependencies are header-only / embedded in the repo
+(fake-freetype over stb_truetype, nanosvg, zydis, lz4, precompiled
+shaders) — there is **no vcpkg / external package restore** needed; the
+empty `vcpkg_installed/` folder in the original archive is unused.
+
+Requirements: Visual Studio with the "Desktop development with C++"
+workload installed (provides the Windows SDK and MASM).
 
 The project can't be compiled on Linux (requires the Windows SDK,
 DirectX 11 headers, MASM for `syscall_impl.asm`, and MSVC); the Linux
